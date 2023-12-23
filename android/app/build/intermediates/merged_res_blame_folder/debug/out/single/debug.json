@@ -1,0 +1,238 @@
+[
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_espresso_pic_2_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/espresso_pic_2_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_americano_pic_1_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/americano_pic_1_portrait.png"
+    },
+    {
+        "merged": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-merged_res-39:\\mipmap-mdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-main-41:\\mipmap-mdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_black_coffee_pic_1_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/black_coffee_pic_1_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_avatar.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/avatar.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_americano_pic_3_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/americano_pic_3_portrait.png"
+    },
+    {
+        "merged": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-merged_res-39:\\mipmap-xxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-main-41:\\mipmap-xxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_macchiato_pic_2_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/macchiato_pic_2_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_americano_pic_1_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/americano_pic_1_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_macchiato_pic_3_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/macchiato_pic_3_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_espresso_pic_1_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/espresso_pic_1_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_black_coffee_pic_3_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/black_coffee_pic_3_portrait.png"
+    },
+    {
+        "merged": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-merged_res-39:\\mipmap-mdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-main-41:\\mipmap-mdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_latte_pic_1_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/latte_pic_1_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_macchiato_pic_2_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/macchiato_pic_2_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_americano_pic_2_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/americano_pic_2_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_robusta_coffee_beans_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/robusta_coffee_beans_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_excelsa_coffee_beans_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/excelsa_coffee_beans_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_arabica_coffee_beans_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/arabica_coffee_beans_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_robusta_coffee_beans_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/robusta_coffee_beans_portrait.png"
+    },
+    {
+        "merged": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-merged_res-39:\\mipmap-hdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-main-41:\\mipmap-hdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_latte_pic_2_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/latte_pic_2_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_latte_pic_3_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/latte_pic_3_portrait.png"
+    },
+    {
+        "merged": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-merged_res-39:\\mipmap-xxxhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-main-41:\\mipmap-xxxhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-merged_res-39:\\mipmap-xhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-main-41:\\mipmap-xhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_latte_pic_1_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/latte_pic_1_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_cappuccino_pic_1_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/cappuccino_pic_1_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_cappuccino_pic_2_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/cappuccino_pic_2_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_cappuccino_pic_3_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/cappuccino_pic_3_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_applepay.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/applepay.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_latte_pic_3_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/latte_pic_3_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_arabica_coffee_beans_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/arabica_coffee_beans_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_cappuccino_pic_3_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/cappuccino_pic_3_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_black_coffee_pic_2_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/black_coffee_pic_2_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_liberica_coffee_beans_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/liberica_coffee_beans_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_black_coffee_pic_1_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/black_coffee_pic_1_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_americano_pic_2_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/americano_pic_2_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_macchiato_pic_3_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/macchiato_pic_3_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_gpay.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/gpay.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_cappuccino_pic_2_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/cappuccino_pic_2_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_espresso_pic_1_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/espresso_pic_1_portrait.png"
+    },
+    {
+        "merged": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-merged_res-39:\\mipmap-xhdpi_ic_launcher_round.png.flat",
+        "source": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-main-41:\\mipmap-xhdpi\\ic_launcher_round.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_black_coffee_pic_2_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/black_coffee_pic_2_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_amazonpay.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/amazonpay.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_espresso_pic_2_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/espresso_pic_2_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_espresso_pic_3_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/espresso_pic_3_portrait.png"
+    },
+    {
+        "merged": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-merged_res-39:\\mipmap-xxxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-main-41:\\mipmap-xxxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_excelsa_coffee_beans_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/excelsa_coffee_beans_square.png"
+    },
+    {
+        "merged": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-merged_res-39:\\drawable_rn_edit_text_material.xml.flat",
+        "source": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-main-41:\\drawable\\rn_edit_text_material.xml"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_cappuccino_pic_1_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/cappuccino_pic_1_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_latte_pic_2_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/latte_pic_2_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_black_coffee_pic_3_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/black_coffee_pic_3_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_macchiato_pic_1_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/macchiato_pic_1_portrait.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_macchiato_pic_1_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/macchiato_pic_1_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_espresso_pic_3_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/espresso_pic_3_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_americano_pic_3_square.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/americano_pic_3_square.png"
+    },
+    {
+        "merged": "com.coffee_shop_app-merged_res-39:/drawable_liberica_coffee_beans_portrait.png.flat",
+        "source": "com.coffee_shop_app-main-41:/drawable/liberica_coffee_beans_portrait.png"
+    },
+    {
+        "merged": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-merged_res-39:\\mipmap-hdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-main-41:\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-merged_res-39:\\mipmap-xxhdpi_ic_launcher.png.flat",
+        "source": "C:\\Users\\rutud\\.gradle\\daemon\\8.0.1\\com.coffee_shop_app-main-41:\\mipmap-xxhdpi\\ic_launcher.png"
+    }
+]
