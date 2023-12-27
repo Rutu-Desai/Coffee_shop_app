@@ -1,4 +1,4 @@
-import { Dimensions, ScrollView, StatusBar, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
+import { Dimensions, ScrollView, StatusBar, StyleSheet, Text, TextInput, ToastAndroid, TouchableOpacity, View } from 'react-native';
 import React, {useRef, useState} from 'react';
 import { useStore } from '../store/store';
 import { useBottomTabBarHeight } from '@react-navigation/bottom-tabs'; 
@@ -34,6 +34,10 @@ const getCoffeeList = (category:string, data:any) => {
 const HomeScreen = ({navigation}: any) => {
   const CoffeeList = useStore((state:any) => state.CoffeeList);
   const BeanList = useStore((state:any) => state.BeanList);
+
+  const addToCart = useStore((state: any) => state.addToCart);
+  const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
+
   const [categories, setCategories] = useState(getCategoriesFromData(CoffeeList));
   const [searchText, setSearchText] = useState('');
   const [categoryIndex, setCategoryIndex] = useState({
@@ -67,7 +71,31 @@ const HomeScreen = ({navigation}: any) => {
     setCategoryIndex({index:0, category: categories[0]});
     setSortedCoffee([...CoffeeList]);
     setSearchText('');
-  }
+  };
+
+  const coffeeCardAddToCart = ({
+    id,
+    index,
+    name,
+    roasted,
+    imagelink_square,
+    special_ingredient,
+    type,
+    prices,
+  }: any) => {
+    addToCart({
+      id,
+      index,
+      name,
+      roasted,
+      imagelink_square,
+      special_ingredient,
+      type,
+      prices,
+    });
+    calculateCartPrice();
+    ToastAndroid.showWithGravity(`${name} is Added to Cart`, ToastAndroid.SHORT, ToastAndroid.CENTER);
+  };
 
   return (
     <View style ={styles.ScreenContainer}>
@@ -147,7 +175,7 @@ const HomeScreen = ({navigation}: any) => {
                 special_ingredient={item.special_ingredient} 
                 average_rating={item.average_rating} 
                 price={item.prices[2]} 
-                buttonPressHandler={()=>{}} />
+                buttonPressHandler ={coffeeCardAddToCart} />
               </TouchableOpacity>
             )
         }} />
@@ -176,7 +204,7 @@ const HomeScreen = ({navigation}: any) => {
               special_ingredient={item.special_ingredient} 
               average_rating={item.average_rating} 
               price={item.prices[2]} 
-              buttonPressHandler={()=>{}} />
+              buttonPressHandler={coffeeCardAddToCart} />
             </TouchableOpacity>
           )
         }} />

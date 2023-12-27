@@ -1,26 +1,30 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
+import { StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import React from 'react';
+import { useNavigation } from '@react-navigation/native'; 
 import { COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
 import GradientBGIcon from './GradientBGIcon';
 import ProfilePic from './ProfilePic';
 
-
 interface HeaderBarProps {
-    title?:string;
+    title?: string;
 }
 
-const HeaderBar:React.FC<HeaderBarProps> = ({title}, {navigation}: any) => {
-  return (
-    <View style={styles.HeaderContainer}>
-        <GradientBGIcon name='menu' color={COLORS.primaryLightGreyHex} size={FONTSIZE.size_16}/>
-        <Text style={styles.HeaderText}>{title}</Text>
-        <TouchableOpacity onPress={() => {
-            navigation.navigate('Login');
-        }}>
-            <ProfilePic />
-        </TouchableOpacity>
-    </View>
-  )
+const HeaderBar: React.FC<HeaderBarProps> = ({ title }) => {
+    const navigation = useNavigation(); 
+
+    return (
+        <View style={styles.HeaderContainer}>
+            <TouchableOpacity>
+                <GradientBGIcon name='menu' color={COLORS.primaryLightGreyHex} size={FONTSIZE.size_16} />
+            </TouchableOpacity>
+            <Text style={styles.HeaderText}>{title}</Text>
+            <TouchableOpacity onPress={() => {
+                navigation.navigate('Login'); // Navigate to the 'Login' screen, can be made better later
+            }}>
+                <ProfilePic />
+            </TouchableOpacity>
+        </View>
+    )
 }
 
 const styles = StyleSheet.create({
@@ -37,4 +41,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default HeaderBar
+export default HeaderBar;

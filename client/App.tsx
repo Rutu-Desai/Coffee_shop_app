@@ -6,6 +6,7 @@ import DetailsScreen from './src/screens/DetailsScreen';
 import PaymentScreen from './src/screens/PaymentScreen';
 import TabNavigator from './src/navigators/TabNavigator';
 import LoginScreen from './src/screens/LoginScreen';
+import HomeScreen from './src/screens/HomeScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -14,6 +15,7 @@ const App = () => {
     <NavigationContainer>
       <Stack.Navigator screenOptions={{headerShown: false}}>
         <Stack.Screen name="Tab" component={TabNavigator} options={{animation: 'slide_from_bottom'}}></Stack.Screen>
+        <Stack.Screen name="Home" component={HomeScreen} options={{animation: 'slide_from_bottom'}}></Stack.Screen>
         <Stack.Screen name="Login" component={LoginScreen} options={{animation: 'slide_from_bottom'}}></Stack.Screen>
         <Stack.Screen name="Details" component={DetailsScreen} options={{animation: 'slide_from_bottom'}}></Stack.Screen>
         <Stack.Screen name="Payment" component={PaymentScreen} options={{animation: 'slide_from_bottom'}}></Stack.Screen>  
