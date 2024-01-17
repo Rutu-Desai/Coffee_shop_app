@@ -22,28 +22,7 @@ import CustomIcon from '../components/CustomIcon';
 import {useStore} from '../store/store';
 import PopUpAnimation from '../components/PopUpAnimation';
 
-const PaymentList = [
-  {
-    name: 'Wallet',
-    icon: 'icon',
-    isIcon: true,
-  },
-  {
-    name: 'Google Pay',
-    icon: require('../assets/app_images/gpay.png'),
-    isIcon: false,
-  },
-  {
-    name: 'Apple Pay',
-    icon: require('../assets/app_images/applepay.png'),
-    isIcon: false,
-  },
-  {
-    name: 'Amazon Pay',
-    icon: require('../assets/app_images/amazonpay.png'),
-    isIcon: false,
-  },
-];
+
 
 const PaymentScreen = ({navigation, route}: any) => {
   const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
@@ -155,7 +134,7 @@ const PaymentScreen = ({navigation, route}: any) => {
               </View>
             </View>
           </TouchableOpacity>
-          {PaymentList.map((data: any) => (
+          {/* {PaymentList.map((data: any) => (
             <TouchableOpacity
               key={data.name}
               onPress={() => {
@@ -168,13 +147,13 @@ const PaymentScreen = ({navigation, route}: any) => {
                 isIcon={data.isIcon}
               />
             </TouchableOpacity>
-          ))}
+          ))} */}
         </View>
       </ScrollView>
 
       <PaymentFooter
         buttonTitle={`Pay with ${paymentMode}`}
-        price={{price: route.params.amount, currency: '$'}}
+        price={{price: route.params.amount, currency: 'Rs'}}
         buttonPressHandler={buttonPressHandler}
       />
     </View>

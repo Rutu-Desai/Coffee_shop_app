@@ -48,7 +48,7 @@ const PaymentMethod: React.FC<PaymentMethodProps> = ({
             />
             <Text style={styles.PaymentTitle}>{name}</Text>
           </View>
-          <Text style={styles.PaymentPrice}>$ 100.50</Text>
+          <Text style={styles.PaymentPrice}>Rs 8,050</Text>
         </LinearGradient>
       ) : (
         <LinearGradient

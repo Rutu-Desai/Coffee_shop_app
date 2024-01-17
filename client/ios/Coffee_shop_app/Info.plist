@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Coffee_shop_app</string>
+	<string>Coffee_Shop_App</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -53,16 +53,16 @@
 	<false/>
 	<key>UIAppFonts</key>
 	<array>
-		<string>app_icons.ttf.ttf</string>
-		<string>Poppins-Black.ttf.ttf</string>
-		<string>Poppins-Bold.ttf.ttf</string>
-		<string>Poppins-ExtraBold.ttf.ttf</string>
-		<string>Poppins-ExtraLight.ttf.ttf</string>
-		<string>Poppins-Light.ttf.ttf</string>
-		<string>Poppins-Medium.ttf.ttf</string>
-		<string>Poppins-Regular.ttf.ttf</string>
-		<string>Poppins-SemiBold.ttf.ttf</string>
-		<string>Poppins-Thin.ttf.ttf</string>
+		<string>app_icons.ttf</string>
+		<string>Poppins-Black.ttf</string>
+		<string>Poppins-Bold.ttf</string>
+		<string>Poppins-ExtraBold.ttf</string>
+		<string>Poppins-ExtraLight.ttf</string>
+		<string>Poppins-Light.ttf</string>
+		<string>Poppins-Medium.ttf</string>
+		<string>Poppins-Regular.ttf</string>
+		<string>Poppins-SemiBold.ttf</string>
+		<string>Poppins-Thin.ttf</string>
 	</array>
 </dict>
 </plist>

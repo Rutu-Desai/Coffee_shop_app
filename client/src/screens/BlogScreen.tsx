@@ -168,6 +168,13 @@ const BlogScreen = ({navigation}: any) => {
               of single-origins in order to create new tastes. The goal of coffee blending is to produce a cup 
               of coffee that is superior to each single component alone.Coffee blending may be done either before or 
               after roasting, and arguments for and against each method exist. For the home coffee chef purposes, 
+              blending before roasting makes perfect sense because it is easier and involves smaller quantities.{"\n\n"}
+              Like an artist creating a perfectly harmonious canvas by using his paint palette, 
+              the roaster produces seductive masterpieces in the cup out of single-origin coffees. 
+              As old as coffee itself, blending is a technique that optimizes the body, aroma, and flavors 
+              of single-origins in order to create new tastes. The goal of coffee blending is to produce a cup 
+              of coffee that is superior to each single component alone.Coffee blending may be done either before or 
+              after roasting, and arguments for and against each method exist. For the home coffee chef purposes, 
               blending before roasting makes perfect sense because it is easier and involves smaller quantities.
             </Text>
           </View>

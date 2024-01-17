@@ -9,10 +9,12 @@ import {
 } from 'react-native';
 import {useStore} from '../store/store';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
-import {COLORS, SPACING} from '../theme/theme';
+import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
 import HeaderBar from '../components/HeaderBar';
 import EmptyListAnimation from '../components/EmptyListAnimation';
 import FavoritesItemCard from '../components/FavoritesItemCard';
+import GradientBGIcon from '../components/GradientBGIcon';
+import ProfilePic from '../components/ProfilePic';
 
 const FavoritesScreen = ({navigation}: any) => {
   const FavoritesList = useStore((state: any) => state.FavoritesList);
@@ -34,7 +36,17 @@ const FavoritesScreen = ({navigation}: any) => {
         <View
           style={[styles.ScrollViewInnerView, {marginBottom: tabBarHeight}]}>
           <View style={styles.ItemContainer}>
-            <HeaderBar title="Favourites" />
+            <View style={styles.HeaderContainer}>
+              <TouchableOpacity>
+                  <GradientBGIcon name='menu' color={COLORS.primaryLightGreyHex} size={FONTSIZE.size_16} />
+              </TouchableOpacity>
+              <Text style={styles.HeaderText}>Favourites</Text>
+              <TouchableOpacity onPress={() => {
+                navigation.push('UserInfo')
+              }}>
+                  <ProfilePic />
+              </TouchableOpacity>
+          </View>
 
             {FavoritesList.length == 0 ? (
               <EmptyListAnimation title={'No Favourites'} />
@@ -76,6 +88,17 @@ const FavoritesScreen = ({navigation}: any) => {
 };
 
 const styles = StyleSheet.create({
+  HeaderContainer: {
+    padding: SPACING.space_10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  HeaderText: {
+    fontFamily: FONTFAMILY.poppins_semibold,
+    fontSize: FONTSIZE.size_20,
+    color: COLORS.primaryWhiteHex,
+  },
   ScreenContainer: {
     flex: 1,
     backgroundColor: COLORS.primaryBlackHex,

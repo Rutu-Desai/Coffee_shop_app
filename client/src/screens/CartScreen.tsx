@@ -9,11 +9,13 @@ import {
 } from 'react-native';
 import {useStore} from '../store/store';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
-import {COLORS, SPACING} from '../theme/theme';
+import {COLORS, FONTFAMILY, FONTSIZE, SPACING} from '../theme/theme';
 import HeaderBar from '../components/HeaderBar';
 import EmptyListAnimation from '../components/EmptyListAnimation';
 import PaymentFooter from '../components/PaymentFooter';
 import CartItem from '../components/CartItem';
+import ProfilePic from '../components/ProfilePic';
+import GradientBGIcon from '../components/GradientBGIcon';
 
 const CartScreen = ({navigation, route}: any) => {
   const CartList = useStore((state: any) => state.CartList);
@@ -40,6 +42,8 @@ const CartScreen = ({navigation, route}: any) => {
     decrementCartItemQuantity(id, size);
     calculateCartPrice();
   };
+  
+
   return (
     <View style={styles.ScreenContainer}>
       <StatusBar backgroundColor={COLORS.primaryBlackHex} />
@@ -50,7 +54,17 @@ const CartScreen = ({navigation, route}: any) => {
         <View
           style={[styles.ScrollViewInnerView, {marginBottom: tabBarHeight}]}>
           <View style={styles.ItemContainer}>
-            <HeaderBar title="Cart" />
+          <View style={styles.HeaderContainer}>
+            <TouchableOpacity>
+                <GradientBGIcon name='menu' color={COLORS.primaryLightGreyHex} size={FONTSIZE.size_16} />
+            </TouchableOpacity>
+            <Text style={styles.HeaderText}>Cart</Text>
+            <TouchableOpacity onPress={() => {
+              navigation.push('UserInfo')
+            }}>
+                <ProfilePic />
+            </TouchableOpacity>
+          </View>
 
             {CartList.length == 0 ? (
               <EmptyListAnimation title={'Cart is Empty'} />
@@ -91,7 +105,7 @@ const CartScreen = ({navigation, route}: any) => {
             <PaymentFooter
               buttonPressHandler={buttonPressHandler}
               buttonTitle="Pay"
-              price={{price: CartPrice, currency: '$'}}
+              price={{price: CartPrice, currency: 'Rs'}}
             />
           ) : (
             <></>
@@ -103,6 +117,17 @@ const CartScreen = ({navigation, route}: any) => {
 };
 
 const styles = StyleSheet.create({
+  HeaderContainer: {
+    padding: SPACING.space_10,
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  },
+  HeaderText: {
+    fontFamily: FONTFAMILY.poppins_semibold,
+    fontSize: FONTSIZE.size_20,
+    color: COLORS.primaryWhiteHex,
+  },
   ScreenContainer: {
     flex: 1,
     backgroundColor: COLORS.primaryBlackHex,

@@ -1,71 +1,57 @@
-import { Image, StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react'
-import { COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme'
+import { StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native'
+import React, { useState } from 'react'
+import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
+import LoginInput from '../components/LoginInput';
 
+const LoginScreen = ({navigation} : any) => {
+  const [searchText, setSearchText] = useState('');
 
-
-const LoginScreen = () => {
   return (
     <View style={styles.OuterContainer}>
-      <View style={styles.ImageContainer}>
-          <Image source={require('../assets/app_images/profile.png')} 
-          style={styles.Image}/>
-      </View>
-      <View style = {styles.InfoContainer}>
-        <View style={styles.TextContainer}>
-          <Text style={styles.InfoText}>Username:</Text><Text style={styles.InfoSubText}>Coffee_lover</Text>
-        </View>
-        <View>
-          <Text style={styles.InfoText}>Email:</Text><Text style={styles.InfoSubText}>Coff.21@gmail.com</Text>
-        </View>
-        <View>
-          <Text style={styles.InfoText}>Phone:</Text><Text style={styles.InfoSubText}>989898989</Text>
-        </View>
-        <View>
-          <Text style={styles.InfoText}>Address:</Text><Text style={styles.InfoSubText}>Near coffee shop</Text>
-        </View>
-      </View>
+        <LoginInput iconType='wallet' placeholderText='Enter Username' />
+        <LoginInput iconType='star' placeholderText='Enter Email' />
+        <LoginInput iconType='chip' placeholderText='Enter Phone' />
+        <LoginInput iconType='location' placeholderText='Enter Address' />
+
+
+        <TouchableOpacity  onPress={() => {
+            navigation.navigate('Tab')
+        }}>
+            <Text style={styles.ButtonText}>Go to Home!</Text>
+        </TouchableOpacity>
     </View>
   )
 }
 
 const styles = StyleSheet.create({
-  OuterContainer: {
-    width: '100%',
-    height: '100%',
-    backgroundColor: COLORS.primaryBlackHex,
-  },
-  ImageContainer: {
-    paddingTop: '45%',
-    paddingHorizontal: '30%',
-    overflow: 'hidden',
+    OuterContainer: {
+        flex: 1,
+        justifyContent: 'center',
+        backgroundColor: COLORS.primaryBlackHex,
 
-  },
-  Image: {
-    justifyContent: 'center',
-    alignContent: 'center',
-    borderWidth: 4,
-    borderRadius: 72,
-  },
-  InfoContainer: {
-    marginVertical: SPACING.space_36,
-    marginLeft: SPACING.space_36*3,
-    gap: SPACING.space_20,
-  },
-  TextContainer: {
-
-  },
-  InfoText: {
-    fontFamily: FONTFAMILY.poppins_semibold,
-    fontSize: FONTSIZE.size_14,
-    color: COLORS.primaryWhiteHex,
-  },
-  InfoSubText: {
-    flex: 1,
-    fontFamily: FONTFAMILY.poppins_medium,
-    fontSize: FONTSIZE.size_14,
-    color: COLORS.primaryWhiteHex,
-  },
-})
+    },
+    ButtonText: {
+        color: COLORS.primaryWhiteHex,
+        fontSize: FONTSIZE.size_18,
+        fontFamily: FONTFAMILY.poppins_semibold,
+    },
+    InputContainerComponent: {
+        flexDirection: 'row',
+        margin: SPACING.space_30,
+        borderRadius: BORDERRADIUS.radius_20,
+        backgroundColor: COLORS.primaryDarkGreyHex,
+        alignItems: 'center',
+      },
+    InputIcon: {
+    marginHorizontal: SPACING.space_20,
+    },
+    TextInputContainer: {
+        flex: 1,
+        height: SPACING.space_20 * 3,
+        fontFamily: FONTFAMILY.poppins_medium,
+        fontSize: FONTSIZE.size_14,
+        color: COLORS.primaryWhiteHex,
+      },
+});
 
 export default LoginScreen

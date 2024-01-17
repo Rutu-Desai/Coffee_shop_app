@@ -14,6 +14,14 @@ export const useStore = create(
       FavoritesList: [],
       CartList: [],
       OrderHistoryList: [],
+      // when changes to data done
+      // init_store: () => 
+      //   set(
+      //     produce( state => {
+      //       state.CoffeeList = CoffeeData;
+      //       state.BeanList = BeansData;
+      //     }),
+      //   ),
       addToCart: (cartItem: any) =>
         set(
           produce(state => {
@@ -33,6 +41,7 @@ export const useStore = create(
                 }
                 if (size == false) {
                   state.CartList[i].prices.push(cartItem.prices[0]);
+                  // state.CartList[i].prices[0].price = state.CartList[i].prices[0].price * 80;
                 }
                 state.CartList[i].prices.sort((a: any, b: any) => {
                   if (a.size > b.size) {
@@ -60,12 +69,13 @@ export const useStore = create(
               for (let j = 0; j < state.CartList[i].prices.length; j++) {
                 tempprice =
                   tempprice +
-                  parseFloat(state.CartList[i].prices[j].price) *
+                  parseInt(state.CartList[i].prices[j].price) *
                     state.CartList[i].prices[j].quantity;
               }
               state.CartList[i].ItemPrice = tempprice.toFixed(2).toString();
               totalprice = totalprice + tempprice;
             }
+            // totalprice = totalprice * 80;
             state.CartPrice = totalprice.toFixed(2).toString();
           }),
         ),
@@ -113,7 +123,7 @@ export const useStore = create(
                   break;
                 }
               }
-            } else if (type == 'Beans') {
+            } else if (type == 'Bean') {
               for (let i = 0; i < state.BeanList.length; i++) {
                 if (state.BeanList[i].id == id) {
                   if (state.BeanList[i].favourite == true) {
@@ -205,6 +215,7 @@ export const useStore = create(
               });
             }
             state.CartList = [];
+            // state.OrderHistoryList = [];
           }),
         ),
     }),
