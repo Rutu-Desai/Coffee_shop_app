@@ -148,6 +148,7 @@ const BlogScreen = ({navigation}: any) => {
              </TouchableOpacity>
              <Text style={styles.HeaderText}>Top Stories</Text>
              <TouchableOpacity onPress={() => {
+                navigation.push('UserInfo');
               }}>
                 <ProfilePic />
               </TouchableOpacity>

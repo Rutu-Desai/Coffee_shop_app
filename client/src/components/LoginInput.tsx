@@ -6,15 +6,18 @@ import CustomIcon from './CustomIcon';
 interface LoginInputProps {
   iconType: string;
   placeholderText: string;
+  value: any;
+  setValue: any;
   secureTextEntry ?: boolean;
 }
 
 const LoginInput: React.FC<LoginInputProps> = ({
   iconType,
   placeholderText,
+  value,
+  setValue,
   secureTextEntry
 }) => {
-  const [searchText, setSearchText] = useState('');
 
   return (
     <View style={styles.InputContainerComponent}>
@@ -24,7 +27,7 @@ const LoginInput: React.FC<LoginInputProps> = ({
           name= {iconType}
           size={FONTSIZE.size_18}
           color={
-            searchText.length > 0
+            value.length > 0
               ? COLORS.primaryOrangeHex
               : COLORS.primaryLightGreyHex
           }
@@ -32,16 +35,16 @@ const LoginInput: React.FC<LoginInputProps> = ({
       </TouchableOpacity>
       <TextInput
         placeholder= {placeholderText}
-        value={searchText}
+        value={value}
         autoCorrect={false}
         secureTextEntry={secureTextEntry}
         onChangeText={text => {
-          setSearchText(text);
+          setValue(text);
         }}
-        placeholderTextColor={COLORS.primaryLightGreyHex}
+        placeholderTextColor={COLORS.secondaryLightGreyHex}
         style={styles.TextInputContainer}
       />
-      {searchText.length > 0 ? (
+      {value.length > 0 ? (
         <TouchableOpacity>
           <CustomIcon
             style={styles.InputIcon}
@@ -49,7 +52,7 @@ const LoginInput: React.FC<LoginInputProps> = ({
             size={FONTSIZE.size_16}
             color={COLORS.primaryLightGreyHex}
             onPress={() => {
-                setSearchText('')
+                setValue('')
             }}
           />
         </TouchableOpacity>
@@ -61,23 +64,23 @@ const LoginInput: React.FC<LoginInputProps> = ({
 }
 
 const styles = StyleSheet.create({
-    InputContainerComponent: {
-        flexDirection: 'row',
-        margin: SPACING.space_30,
-        borderRadius: BORDERRADIUS.radius_20,
-        backgroundColor: COLORS.primaryDarkGreyHex,
-        alignItems: 'center',
-      },
-    InputIcon: {
+  InputContainerComponent: {
+    flexDirection: 'row',
+    margin: SPACING.space_18,
+    borderRadius: BORDERRADIUS.radius_20,
+    backgroundColor: COLORS.primaryDarkGreyHex,
+    alignItems: 'center',
+  },
+  InputIcon: {
     marginHorizontal: SPACING.space_20,
-    },
-    TextInputContainer: {
-        flex: 1,
-        height: SPACING.space_20 * 3,
-        fontFamily: FONTFAMILY.poppins_medium,
-        fontSize: FONTSIZE.size_14,
-        color: COLORS.primaryWhiteHex,
-      },
+  },
+  TextInputContainer: {
+    flex: 1,
+    height: SPACING.space_20 * 3,
+    fontFamily: FONTFAMILY.poppins_medium,
+    fontSize: FONTSIZE.size_14,
+    color: COLORS.primaryWhiteHex,
+  },
 })
 
 export default LoginInput
