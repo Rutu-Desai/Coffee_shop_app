@@ -7,6 +7,7 @@ import {
   View,
   TouchableWithoutFeedback,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {useStore} from '../store/store';
 import {
@@ -18,6 +19,7 @@ import {
 } from '../theme/theme';
 import ImageBackgroundInfo from '../components/ImageBackgroundInfo';
 import PaymentFooter from '../components/PaymentFooter';
+import axios from 'axios';
 
 const DetailsScreen = ({navigation, route}: any) => {
   const ItemOfIndex = useStore((state: any) =>
@@ -33,6 +35,9 @@ const DetailsScreen = ({navigation, route}: any) => {
   const [price, setPrice] = useState(ItemOfIndex.prices[0]);
   const [fullDesc, setFullDesc] = useState(false);
 
+  const UserName = useStore((state: any) => state.UserName);
+  const CartList = useStore((state: any) => state.CartList);
+
   const ToggleFavourite = (favourite: boolean, type: string, id: string) => {
     favourite ? deleteFromFavoriteList(type, id) : addToFavoriteList(type, id);
   };
@@ -41,7 +46,7 @@ const DetailsScreen = ({navigation, route}: any) => {
     navigation.pop();
   };
 
-  const addToCarthandler = ({
+  const addToCarthandler = async ({
     id,
     index,
     name,
@@ -51,6 +56,86 @@ const DetailsScreen = ({navigation, route}: any) => {
     type,
     price,
   }: any) => {
+
+    let found = false;
+    for (let i = 0; i < CartList.length; i++) {
+      if (CartList[i].id == id) {
+        found = true;
+        let size = false;
+        for (let j = 0; j < CartList[i].prices.length; j++) {
+          if (CartList[i].prices[j].size == price.size) {
+            size = true;
+            
+            //increment cart item quantity
+            try {
+              const {data} = await axios.put('http://10.80.4.21:8080/api/v2/auth/cartUpdateAdd', {
+                id,
+                UserName,
+              });
+              Alert.alert(data && data.message);
+        
+              console.log(data);
+        
+            } catch (error: any) {
+              Alert.alert(error.response.data.message);
+              console.log(error);      
+            }
+
+            break;
+          }
+        }
+        if (size == false) {
+          //add a diff size for same product
+          try {
+            const {data} = await axios.put('http://10.80.4.21:8080/api/v2/auth/cartUpdateItemAdd', {
+              id,
+              UserName,
+              prices:[{...price, quantity: 1}],
+            });
+            Alert.alert(data && data.message);
+      
+            console.log(data);
+      
+          } catch (error: any) {
+            Alert.alert(error.response.data.message);
+            console.log(error);      
+          }
+        }
+        // CartList[i].prices.sort((a: any, b: any) => {
+        //   if (a.size > b.size) {
+        //     return -1;
+        //   }
+        //   if (a.size < b.size) {
+        //     return 1;
+        //   }
+        //   return 0;
+        // });
+        break;
+      }
+    }
+    if (found == false) {
+      try {
+        const {data} = await axios.post('http://10.80.4.21:8080/api/v2/auth/cartItemAdd', {
+          id,
+          UserName,
+          index,
+          name,
+          roasted,
+          imagelink_square,
+          special_ingredient,
+          type,
+          prices: [{...price, quantity: 1}],
+        });
+        Alert.alert(data && data.message);
+  
+        console.log(data);
+  
+      } catch (error: any) {
+        Alert.alert(error.response.data.message);
+        console.log(error);      
+      }
+    }
+
     addToCart({
       id,
       index,
@@ -61,6 +146,7 @@ const DetailsScreen = ({navigation, route}: any) => {
       type,
       prices: [{...price, quantity: 1}],
     });
+
     calculateCartPrice();
     navigation.navigate('Cart');
   };

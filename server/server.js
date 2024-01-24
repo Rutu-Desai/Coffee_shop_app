@@ -21,6 +21,9 @@ app.use(morgan('dev'));
 
 //ROUTES
 app.use('/api/v1/auth', require('./routes/userRoutes'));
+app.use('/api/v2/auth', require('./routes/cartRoutes'));
+app.use('/api/v4/auth', require('./routes/orderhistoryRoutes'));
+
 
 //PORT numbers
 const PORT = process.env.PORT || 8080;

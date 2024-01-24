@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
   View,
   ToastAndroid,
+  Alert,
 } from 'react-native';
 import {useStore} from '../store/store';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
@@ -25,6 +26,7 @@ import CoffeeCard from '../components/CoffeeCard';
 import {Dimensions} from 'react-native';
 import GradientBGIcon from '../components/GradientBGIcon';
 import ProfilePic from '../components/ProfilePic';
+import axios from 'axios';
 
 const getCategoriesFromData = (data: any) => {
   let temp: any = {};
@@ -57,6 +59,9 @@ const HomeScreen = ({navigation}: any) => {
   const BeanList = useStore((state: any) => state.BeanList);
   const addToCart = useStore((state: any) => state.addToCart);
   const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
+
+  const UserName = useStore((state: any) => state.UserName);
+  const CartList = useStore((state: any) => state.CartList);
 
   const [categories, setCategories] = useState(
     getCategoriesFromData(CoffeeList),
@@ -98,7 +103,7 @@ const HomeScreen = ({navigation}: any) => {
     setSearchText('');
   };
 
-  const CoffeCardAddToCart = ({
+  const CoffeCardAddToCart = async ({
     id,
     index,
     name,
@@ -108,6 +113,87 @@ const HomeScreen = ({navigation}: any) => {
     type,
     prices,
   }: any) => {
+
+    let found = false;
+    for (let i = 0; i < CartList.length; i++) {
+      if (CartList[i].id == id) {
+        found = true;
+        let size = false;
+        for (let j = 0; j < CartList[i].prices.length; j++) {
+          console.log("this idk", JSON.stringify(prices));
+          if (CartList[i].prices[j].size == prices[0].size) {
+            size = true;
+            
+            //increment cart item quantity
+            try {
+              const {data} = await axios.put('http://10.80.4.21:8080/api/v2/auth/cartUpdateAdd', {
+                id,
+                UserName,
+              });
+              Alert.alert(data && data.message);
+        
+              console.log(data);
+        
+            } catch (error: any) {
+              Alert.alert(error.response.data.message);
+              console.log(error);      
+            }
+
+            break;
+          }
+        }
+        if (size == false) {
+          //add a diff size for same product
+          try {
+            const {data} = await axios.put('http://10.80.4.21:8080/api/v2/auth/cartUpdateItemAdd', {
+              id,
+              UserName,
+              prices,
+            });
+            Alert.alert(data && data.message);
+      
+            console.log(data);
+      
+          } catch (error: any) {
+            Alert.alert(error.response.data.message);
+            console.log(error);      
+          }
+        }
+        // CartList[i].prices.sort((a: any, b: any) => {
+        //   if (a.size > b.size) {
+        //     return -1;
+        //   }
+        //   if (a.size < b.size) {
+        //     return 1;
+        //   }
+        //   return 0;
+        // });
+        break;
+      }
+    }
+    if (found == false) {
+      try {
+        const {data} = await axios.post('http://10.80.4.21:8080/api/v2/auth/cartItemAdd', {
+          id,
+          UserName,
+          index,
+          name,
+          roasted,
+          imagelink_square,
+          special_ingredient,
+          type,
+          prices: [{...prices[0], quantity: 1}],
+        });
+        
+        Alert.alert(data && data.message);
+        console.log(data);
+  
+      } catch (error: any) {
+        Alert.alert(error.response.data.message);
+        console.log(error);      
+      }
+    }
+
     addToCart({
       id,
       index,

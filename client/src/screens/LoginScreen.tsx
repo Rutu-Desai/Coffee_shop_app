@@ -3,14 +3,17 @@ import React, { useState } from 'react'
 import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
 import LoginInput from '../components/LoginInput';
 import axios from 'axios';
-
+import { useStore } from '../store/store';
 
 const RegisterScreen = ({navigation} : any) => {
   const [UserName, setUserName] = useState('');
-  const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
-  const [Location, setLocation] = useState('');
   const [loading, setLoading] = useState(false);
+  const setUserInfo = useStore((state: any) => state.setUserInfo);
+  const CartList = useStore((state: any) => state.CartList);
+
+  const setCart = useStore((state: any) => state.setCart);
+  const setOrderHistory = useStore((state: any) => state.setOrderHistory)
 
   const handleSubmit = async () => {
     try{
@@ -22,14 +25,51 @@ const RegisterScreen = ({navigation} : any) => {
       }
       setLoading(false);
 
-      const {data} = await axios.post('http://10.80.2.26:8080/api/v1/auth/login', {UserName, Password});
+      //get user details on login
+      const {data} = await axios.post('http://10.80.4.21:8080/api/v1/auth/login', {UserName, Password});
       Alert.alert(data && data.message);
 
-      console.log("data", {UserName, Password});
+      //set values on login
+      setUserInfo(data.user.UserName, data.user.Email, data.user.Phone, data.user.Location);
+
+      console.log("cartlist", JSON.stringify(CartList));
+      
+      //get CartList on login
+      try {
+        const {data} = await axios.put('http://10.80.4.21:8080/api/v2/auth/cartItemGet', {
+          UserName,
+        });
+        Alert.alert(data && data.message);
+        console.log(JSON.stringify(data.cart[0]));
+
+        //set cartlist on login
+        setCart(data.cart);
+
+      } catch (error: any) {
+        Alert.alert(error.response.data.message);
+        console.log(error);      
+      }
+
+      //get OrderHistoryList on login
+      try {
+        const {data} = await axios.post('http://10.80.4.21:8080/api/v4/auth/orderhistoryGet', {
+          UserName,
+        });
+        Alert.alert(data && data.message);
+
+        //set OrderHistoryList on login
+        setOrderHistory(data.orderhistory);
+
+      } catch (error: any) {
+        Alert.alert(error.response.data.message);
+        console.log(error);      
+      }
+
       if(data){
         navigation.navigate('Tab');
       }
-    } catch (error) {
+
+    } catch (error : any) {
       Alert.alert(error.response.data.message);
       setLoading(false);
       console.log(error)
@@ -38,7 +78,6 @@ const RegisterScreen = ({navigation} : any) => {
 
   return (
     <View style={styles.OuterContainer}>
-
           <Text style={styles.PageTitle}>Login</Text>
 
 

@@ -6,6 +6,7 @@ import {
   StatusBar,
   ScrollView,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {
   BORDERRADIUS,
@@ -21,6 +22,7 @@ import LinearGradient from 'react-native-linear-gradient';
 import CustomIcon from '../components/CustomIcon';
 import {useStore} from '../store/store';
 import PopUpAnimation from '../components/PopUpAnimation';
+import axios from 'axios';
 
 
 
@@ -33,9 +35,40 @@ const PaymentScreen = ({navigation, route}: any) => {
   const [paymentMode, setPaymentMode] = useState('Credit Card');
   const [showAnimation, setShowAnimation] = useState(false);
 
-  const buttonPressHandler = () => {
+  const UserName = useStore((state: any) => state.UserName);
+  const CartList = useStore((state: any) => state.CartList);
+  const CartPrice = useStore((state: any) => state.CartPrice);
+
+  const buttonPressHandler = async () => {
     setShowAnimation(true);
     addToOrderHistoryListFromCart();
+
+    try {
+      const OrderDate = new Date().toDateString() + ' ' + new Date().toLocaleTimeString();
+      const {data} = await axios.post('http://10.80.4.21:8080/api/v4/auth/orderhistorySave', {
+        UserName,
+        OrderDate,
+        CartList,
+        CartPrice,
+      });
+      Alert.alert(data && data.message);
+
+    } catch (error: any) {
+      Alert.alert(error.response.data.message);
+      console.log(error);
+    }
+
+    try {
+      const {data} = await axios.put('http://10.80.4.21:8080/api/v2/auth/cartItemAllDelete', {
+        UserName,
+      });
+      Alert.alert(data && data.message);
+
+    } catch (error: any) {
+      Alert.alert(error.response.data.message);
+      console.log(error);
+    }
+
     calculateCartPrice();
     setTimeout(() => {
       setShowAnimation(false);

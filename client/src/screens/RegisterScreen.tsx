@@ -3,14 +3,27 @@ import React, { useState } from 'react'
 import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/theme';
 import LoginInput from '../components/LoginInput';
 import axios from 'axios';
+import { useStore } from '../store/store';
 
 
 const RegisterScreen = ({navigation} : any) => {
   const [UserName, setUserName] = useState('');
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
+  const [Phone, setPhone] = useState('');
   const [Location, setLocation] = useState('');
   const [loading, setLoading] = useState(false);
+  const LoggedIn = useStore((state: any) => state.LoggedIn);
+
+  // const CartList = useStore((state: any) => state.CartList);
+  // console.log(CartList);
+
+  if(LoggedIn){
+    navigation.navigate('Tab');
+    return(
+      <></>
+    );
+  }
 
   const handleSubmit = async () => {
     try{
@@ -22,52 +35,58 @@ const RegisterScreen = ({navigation} : any) => {
       }
       setLoading(false);
 
-      const {data} = await axios.post('http://10.80.2.26:8080/api/v1/auth/register', {UserName, Email, Password, Location});
+      console.log("this is ok");
+
+      const {data} = await axios.post('http://10.80.4.21:8080/api/v1/auth/register', {UserName, Email, Password, Phone, Location});
       Alert.alert(data && data.message);
 
       console.log("data", {UserName, Email, Password, Location});
       if(data){
         navigation.navigate('Login');
       }
-    } catch (error) {
+    } catch (error : any) {
       Alert.alert(error.response.data.message);
       setLoading(false);
-      console.log(error)
+      console.log(error);
     }
   }
 
+  
+
   return (
+
     <View style={styles.OuterContainer}>
 
-          <Text style={styles.PageTitle}>Let's create an account</Text>
+      <Text style={styles.PageTitle}>Let's create an account</Text>
 
 
-        <LoginInput iconType='wallet' placeholderText='Enter Username' value={UserName} setValue={setUserName}/>
-        <LoginInput iconType='star' placeholderText='Enter Email' value={Email} setValue={setEmail} />
-        <LoginInput iconType='chip' placeholderText='Enter Password' value={Password} setValue={setPassword} secureTextEntry={true} />
-        <LoginInput iconType='location' placeholderText='Enter Address' value={Location} setValue={setLocation} />
-        
-        {/* // To check if JSON object is proper updated */}
-        {/* <Text style={styles.ButtonText}>{JSON.stringify({UserName, Email, Password, Location}, null , 4)}</Text> */}
+      <LoginInput iconType='wallet' placeholderText='Enter Username' value={UserName} setValue={setUserName}/>
+      <LoginInput iconType='star' placeholderText='Enter Email' value={Email} setValue={setEmail} />
+      <LoginInput iconType='chip' placeholderText='Enter Password' value={Password} setValue={setPassword} secureTextEntry={true} />
+      <LoginInput iconType='drop' placeholderText='Enter Phone' value={Phone} setValue={setPhone} />
+      <LoginInput iconType='location' placeholderText='Enter Address' value={Location} setValue={setLocation} />
+      
+      {/* // To check if JSON object is proper updated */}
+      {/* <Text style={styles.ButtonText}>{JSON.stringify({UserName, Email, Password, Location}, null , 4)}</Text> */}
 
-        <View>
-          <TouchableOpacity  
-              style={styles.SubmitButton}
-              onPress={() => {
-                // navigation.navigate('Tab')
-                handleSubmit();
-              }}
-          >
-            {loading ? <Text style={styles.ButtonText}>Please Wait...</Text> : <Text style={styles.ButtonText}>Submit Details</Text>}
-          </TouchableOpacity>
+      <View>
+        <TouchableOpacity  
+            style={styles.SubmitButton}
+            onPress={() => {
+              // navigation.navigate('Tab')
+              handleSubmit();
+            }}
+        >
+          {loading ? <Text style={styles.ButtonText}>Please Wait...</Text> : <Text style={styles.ButtonText}>Submit Details</Text>}
+        </TouchableOpacity>
 
-          <TouchableOpacity onPress={() => {
-            navigation.navigate('Login');
-          }}>
-            <Text style={styles.LoginText}>Already have an account? <Text style={styles.LinkText}>LOGIN</Text></Text>
-          </TouchableOpacity>
-            
-        </View>
+        <TouchableOpacity onPress={() => {
+          navigation.navigate('Login');
+        }}>
+          <Text style={styles.LoginText}>Already have an account? <Text style={styles.LinkText}>LOGIN</Text></Text>
+        </TouchableOpacity>
+          
+      </View>
     </View>
   )
 }

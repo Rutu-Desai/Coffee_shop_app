@@ -19,6 +19,10 @@ const userSchema = new mongoose.Schema({
         min: 6,
         max: 64,
     },
+    Phone: {
+        type: String,
+        required: true,
+    },
     Location: {
         type: String,
         required: true,

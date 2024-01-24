@@ -4,7 +4,7 @@ const userModel = require('../models/userModel');
 
 const registerController = async (req, res) => {
     try {
-        const {UserName, Email, Password, Location} = req.body
+        const {UserName, Email, Password, Phone, Location} = req.body
         //validation
         if(!UserName){
             return res.status(400).send({
@@ -24,6 +24,12 @@ const registerController = async (req, res) => {
                 message: 'Password is required and 6 char long'
             })
         }
+        if(!Phone || Phone.length != 10){
+            return res.status(400).send({
+                success: false,
+                message: 'Phone is required and 10 char long'
+            })
+        }
         if(!Location){
             return res.status(400).send({
                 success: false,
@@ -33,18 +39,19 @@ const registerController = async (req, res) => {
         //existing user
         const existingUser = await userModel.findOne({Email: Email});
         const existingUser2 = await userModel.findOne({UserName: UserName});
+        const existingUser3 = await userModel.findOne({Phone: Phone});
 
-        if(existingUser || existingUser2){ 
+        if(existingUser || existingUser2 || existingUser3){ 
             return res.status(500).send({
                 success: false,
-                message: 'User already registered with this email or username'
-            })
+                message: 'User already registered with this email, username, phone'
+            });
         }
         //hashed password
         const hashedPassword = await hashPassword(Password);
         
         //save user
-        const user = await userModel({UserName, Email, Password: hashedPassword, Location}).save();
+        const user = await userModel({UserName, Email, Password: hashedPassword, Phone, Location}).save();
 
         return res.status(201).send({
             success: true,

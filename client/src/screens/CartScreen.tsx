@@ -6,6 +6,7 @@ import {
   Text,
   View,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import {useStore} from '../store/store';
 import {useBottomTabBarHeight} from '@react-navigation/bottom-tabs';
@@ -16,9 +17,11 @@ import PaymentFooter from '../components/PaymentFooter';
 import CartItem from '../components/CartItem';
 import ProfilePic from '../components/ProfilePic';
 import GradientBGIcon from '../components/GradientBGIcon';
+import axios from 'axios';
 
 const CartScreen = ({navigation, route}: any) => {
   const CartList = useStore((state: any) => state.CartList);
+  const UserName = useStore((state: any) => state.UserName);
   const CartPrice = useStore((state: any) => state.CartPrice);
   const incrementCartItemQuantity = useStore(
     (state: any) => state.incrementCartItemQuantity,
@@ -33,13 +36,42 @@ const CartScreen = ({navigation, route}: any) => {
     navigation.push('Payment', {amount: CartPrice});
   };
 
-  const incrementCartItemQuantityHandler = (id: string, size: string) => {
+  const incrementCartItemQuantityHandler = async (id: string, size: string) => {
     incrementCartItemQuantity(id, size);
+    try {
+      const {data} = await axios.put('http://10.80.4.21:8080/api/v2/auth/cartItemIncrement', {
+        id,
+        size,
+        UserName,
+      });
+      Alert.alert(data && data.message);
+      console.log(data);
+
+    } catch (error: any) {
+      Alert.alert(error.response.data.message);
+      console.log(error);      
+    }
+
     calculateCartPrice();
   };
 
-  const decrementCartItemQuantityHandler = (id: string, size: string) => {
+  const decrementCartItemQuantityHandler = async (id: string, size: string) => {
     decrementCartItemQuantity(id, size);
+
+    try {
+      const {data} = await axios.put('http://10.80.4.21:8080/api/v2/auth/cartItemDecrement', {
+        id,
+        size,
+        UserName,
+      });
+      Alert.alert(data && data.message);
+      console.log(data);
+
+    } catch (error: any) {
+      Alert.alert(error.response.data.message);
+      console.log(error);      
+    }
+
     calculateCartPrice();
   };
   

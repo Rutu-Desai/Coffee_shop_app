@@ -25,6 +25,9 @@ import ProfilePic from '../components/ProfilePic';
 
 const OrderHistoryScreen = ({navigation}: any) => {
   const OrderHistoryList = useStore((state: any) => state.OrderHistoryList);
+
+  console.log(JSON.stringify(OrderHistoryList));
+
   const tabBarHeight = useBottomTabBarHeight();
   const [showAnimation, setShowAnimation] = useState(false);
 
@@ -83,7 +86,7 @@ const OrderHistoryScreen = ({navigation}: any) => {
                     key={index.toString()}
                     navigationHandler={navigationHandler}
                     CartList={data.CartList}
-                    CartListPrice={data.CartListPrice}
+                    CartListPrice={data.CartPrice}
                     OrderDate={data.OrderDate}
                   />
                 ))}

@@ -8,12 +8,19 @@ import BeansData from '../data/BeansData';
 export const useStore = create(
   persist(
     (set, get) => ({
+      LoggedIn: '',
       CoffeeList: CoffeeData,
       BeanList: BeansData,
       CartPrice: 0,
       FavoritesList: [],
       CartList: [],
       OrderHistoryList: [],
+      UserName: '',
+      Email: '',
+      Phone: '',
+      Location: '',
+
+
       // when changes to data done
       // init_store: () => 
       //   set(
@@ -22,9 +29,52 @@ export const useStore = create(
       //       state.BeanList = BeansData;
       //     }),
       //   ),
+      loginInfo: () =>
+        set(
+          produce( state => {
+            return state.LoggedIn;
+          }),
+        ),
+      setUserInfo: (UserName: String, Email: String, Phone: Number, Location: String) => 
+        set(
+          produce( state => {
+            state.UserName = UserName;
+            state.Email = Email;
+            state.Phone = Phone;
+            state.Location = Location;
+            state.LoggedIn = 'true';
+          }),
+        ),
+      setCart: (CartList: any) => 
+        set(
+          produce( state => {
+            // console.log("cartlist in setcart",JSON.stringify(CartList));
+            state.CartList = CartList;
+          }),
+        ),
+      setOrderHistory: (OrderHistoryList: any) => 
+        set(
+          produce( state => {
+            // console.log("cartlist in setcart",JSON.stringify(CartList));
+            state.OrderHistoryList = OrderHistoryList;
+          }),
+        ),
+      resetUserInfo: () =>
+        set(
+          produce( state=> {
+            state.UserName = '';
+            state.Email = '';
+            state.Phone = '';
+            state.Location = '';
+            state.LoggedIn = false;
+            state.CartList = [];
+            state.OrderHistoryList = [];
+          }),
+        ),
       addToCart: (cartItem: any) =>
         set(
           produce(state => {
+            console.log(JSON.stringify(cartItem));
             let found = false;
             for (let i = 0; i < state.CartList.length; i++) {
               if (state.CartList[i].id == cartItem.id) {
