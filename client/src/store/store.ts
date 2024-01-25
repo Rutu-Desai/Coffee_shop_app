@@ -53,6 +53,28 @@ export const useStore = create(
             state.CartList = CartList;
           }),
         ),
+      setFav: (FavoritesList: any) => 
+        set(
+          produce( state => {
+            state.FavoritesList = FavoritesList;
+            for(let j=0; j<state.FavoritesList.length; j++){
+              for(let i=0; i< state.CoffeeList.length; i++){
+                if(FavoritesList[j].id == state.CoffeeList[i].id){
+                  state.CoffeeList[i].favourite = true;
+                  break;
+                }
+              }
+            }
+            for(let j=0; j<state.FavoritesList.length; j++){
+              for(let i=0; i< state.BeanList.length; i++){
+                if(FavoritesList[j].id == state.BeanList[i].id){
+                  state.BeanList[i].favourite = true;
+                  break;
+                }
+              }
+            }
+          }),
+        ),
       setOrderHistory: (OrderHistoryList: any) => 
         set(
           produce( state => {
@@ -77,6 +99,13 @@ export const useStore = create(
             state.LoggedIn = false;
             state.CartList = [];
             state.OrderHistoryList = [];
+            state.FavoritesList = [];
+            for(let i=0; i< state.CoffeeList.length; i++){
+              state.CoffeeList[i].favourite = false;
+            }
+            for(let i=0; i< state.BeanList.length; i++){
+              state.BeanList[i].favourite = false;
+            }
           }),
         ),
       addToCart: (cartItem: any) =>

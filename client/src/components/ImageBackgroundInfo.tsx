@@ -6,6 +6,7 @@ import {
   ImageProps,
   TouchableOpacity,
   ImageBackground,
+  Alert,
 } from 'react-native';
 import GradientBGIcon from './GradientBGIcon';
 import {
@@ -16,6 +17,8 @@ import {
   SPACING,
 } from '../theme/theme';
 import CustomIcon from './CustomIcon';
+import axios from 'axios';
+import { useStore } from '../store/store';
 
 interface ImageBackgroundInfoProps {
   EnableBackHandler: boolean;
@@ -48,6 +51,12 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({
   BackHandler,
   ToggleFavourite,
 }) => {
+
+  const UserName = useStore((state: any) => state.UserName);
+  const CoffeeList = useStore((state: any) => state.CoffeeList);
+  const BeanList = useStore((state: any) => state.BeanList);
+  const FavoritesList = useStore((state: any) => state.FavoritesList);
+
   return (
     <View>
       <ImageBackground
@@ -66,8 +75,115 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({
               />
             </TouchableOpacity>
             <TouchableOpacity
-              onPress={() => {
+              onPress={async () => {
                 ToggleFavourite(favourite, type, id);
+                console.log("we here yee");
+                if(favourite==true){
+                  try {
+                    const {data} = await axios.put('http://10.80.4.212:8080/api/v3/auth/favRemove', {
+                      UserName,
+                      type,
+                      id,
+                    });
+                    Alert.alert(data && data.message);
+                  } catch (error: any) {
+                    Alert.alert(error.response.data.message);
+                    console.log(error);
+                  }
+                }
+                if(favourite==false){
+                  if (type == 'Coffee') {
+                    for (let i = 0; i < CoffeeList.length; i++) {
+                      if (CoffeeList[i].id == id) {
+                        try {
+                          let id = CoffeeList[i].id;
+                          let name = CoffeeList[i].name;
+                          let description = CoffeeList[i].description;
+                          let roasted = CoffeeList[i].roasted;
+                          let imagelink_square = CoffeeList[i].imagelink_square;
+                          let imagelink_portrait = CoffeeList[i].imagelink_portrait;
+                          let ingredients = CoffeeList[i].ingredients;
+                          let special_ingredient = CoffeeList[i].special_ingredient;
+                          let prices = CoffeeList[i].prices;
+                          let average_rating = CoffeeList[i].average_rating;
+                          let ratings_count = CoffeeList[i].ratings_count;
+                          let favourite = true;
+                          let type = CoffeeList[i].type;
+                          let index = CoffeeList[i].index;
+  
+                          const {data} = await axios.post('http://10.80.4.212:8080/api/v3/auth/favSave',{
+                            UserName,
+                            id,
+                            name,
+                            description,
+                            roasted,
+                            imagelink_square,
+                            imagelink_portrait,
+                            ingredients,
+                            special_ingredient,
+                            prices,
+                            average_rating,
+                            ratings_count,
+                            favourite,
+                            type,
+                            index,
+                          });
+                          Alert.alert(data && data.message);
+
+                        } catch (error: any) {
+                          Alert.alert(error.response.data.message);
+                          console.log(error);
+                        }
+                      }
+                    }
+                  } else if (type == 'Bean') {
+                    for (let i = 0; i < BeanList.length; i++) {
+                      if (BeanList[i].id == id) {
+                        try {
+                          let id = BeanList[i].id;
+                          let name = BeanList[i].name;
+                          let description = BeanList[i].description;
+                          let roasted = BeanList[i].roasted;
+                          let imagelink_square = BeanList[i].imagelink_square;
+                          let imagelink_portrait = BeanList[i].imagelink_portrait;
+                          let ingredients = BeanList[i].ingredients;
+                          let special_ingredient = BeanList[i].special_ingredient;
+                          let prices = BeanList[i].prices;
+                          let average_rating = BeanList[i].average_rating;
+                          let ratings_count = BeanList[i].ratings_count;
+                          let favourite = true;
+                          let type = BeanList[i].type;
+                          let index = BeanList[i].index;
+  
+                          const {data} = await axios.post('http://10.80.4.212:8080/api/v3/auth/favSave',{
+                            UserName,
+                            id,
+                            name,
+                            description,
+                            roasted,
+                            imagelink_square,
+                            imagelink_portrait,
+                            ingredients,
+                            special_ingredient,
+                            prices,
+                            average_rating,
+                            ratings_count,
+                            favourite,
+                            type,
+                            index,
+                          });
+                          Alert.alert(data && data.message);
+
+                        } catch (error: any) {
+                          Alert.alert(error.response.data.message);
+                          console.log(error);
+                        }
+                      }
+                    }
+                  }
+
+                  console.log(JSON.stringify(FavoritesList));
+                }  
               }}>
               <GradientBGIcon
                 name="like"
@@ -81,8 +197,115 @@ const ImageBackgroundInfo: React.FC<ImageBackgroundInfoProps> = ({
         ) : (
           <View style={styles.ImageHeaderBarContainerWithoutBack}>
             <TouchableOpacity
-              onPress={() => {
+              onPress={async () => {
                 ToggleFavourite(favourite, type, id);
+                console.log("we here");
+                if(favourite==true){
+                  try {
+                    const {data} = await axios.put('http://10.80.4.212:8080/api/v3/auth/favRemove', {
+                      UserName,
+                      type,
+                      id,
+                    });
+                    Alert.alert(data && data.message);
+                  } catch (error: any) {
+                    Alert.alert(error.response.data.message);
+                    console.log(error);
+                  }
+                }
+                if(favourite==false){
+                  if (type == 'Coffee') {
+                    for (let i = 0; i < CoffeeList.length; i++) {
+                      if (CoffeeList[i].id == id) {
+                        try {
+                          let id = CoffeeList[i].id;
+                          let name = CoffeeList[i].name;
+                          let description = CoffeeList[i].description;
+                          let roasted = CoffeeList[i].roasted;
+                          let imagelink_square = CoffeeList[i].imagelink_square;
+                          let imagelink_portrait = CoffeeList[i].imagelink_portrait;
+                          let ingredients = CoffeeList[i].ingredients;
+                          let special_ingredient = CoffeeList[i].special_ingredient;
+                          let prices = CoffeeList[i].prices;
+                          let average_rating = CoffeeList[i].average_rating;
+                          let ratings_count = CoffeeList[i].ratings_count;
+                          let favourite = CoffeeList[i].favourite;
+                          let type = CoffeeList[i].type;
+                          let index = CoffeeList[i].index;
+  
+                          const {data} = await axios.post('http://10.80.4.212:8080/api/v3/auth/favSave',{
+                            UserName,
+                            id,
+                            name,
+                            description,
+                            roasted,
+                            imagelink_square,
+                            imagelink_portrait,
+                            ingredients,
+                            special_ingredient,
+                            prices,
+                            average_rating,
+                            ratings_count,
+                            favourite,
+                            type,
+                            index,
+                          });
+                          Alert.alert(data && data.message);
+
+                        } catch (error: any) {
+                          Alert.alert(error.response.data.message);
+                          console.log(error);
+                        }
+                      }
+                    }
+                  } else if (type == 'Bean') {
+                    for (let i = 0; i < BeanList.length; i++) {
+                      if (BeanList[i].id == id) {
+                        try {
+                          let id = BeanList[i].id;
+                          let name = BeanList[i].name;
+                          let description = BeanList[i].description;
+                          let roasted = BeanList[i].roasted;
+                          let imagelink_square = BeanList[i].imagelink_square;
+                          let imagelink_portrait = BeanList[i].imagelink_portrait;
+                          let ingredients = BeanList[i].ingredients;
+                          let special_ingredient = BeanList[i].special_ingredient;
+                          let prices = BeanList[i].prices;
+                          let average_rating = BeanList[i].average_rating;
+                          let ratings_count = BeanList[i].ratings_count;
+                          let favourite = BeanList[i].favourite;
+                          let type = BeanList[i].type;
+                          let index = BeanList[i].index;
+  
+                          const {data} = await axios.post('http://10.80.4.212:8080/api/v3/auth/favSave',{
+                            UserName,
+                            id,
+                            name,
+                            description,
+                            roasted,
+                            imagelink_square,
+                            imagelink_portrait,
+                            ingredients,
+                            special_ingredient,
+                            prices,
+                            average_rating,
+                            ratings_count,
+                            favourite,
+                            type,
+                            index,
+                          });
+                          Alert.alert(data && data.message);
+
+                        } catch (error: any) {
+                          Alert.alert(error.response.data.message);
+                          console.log(error);
+                        }
+                      }
+                    }
+                  }
+
+                  console.log(JSON.stringify(FavoritesList));
+                }
               }}>
               <GradientBGIcon
                 name="like"

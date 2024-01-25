@@ -13,6 +13,7 @@ const RegisterScreen = ({navigation} : any) => {
   const CartList = useStore((state: any) => state.CartList);
 
   const setCart = useStore((state: any) => state.setCart);
+  const setFav = useStore((state: any) => state.setFav);
   const setOrderHistory = useStore((state: any) => state.setOrderHistory);
   const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
 
@@ -53,6 +54,21 @@ const RegisterScreen = ({navigation} : any) => {
       //set cart price
       calculateCartPrice();
 
+      //get favList on login
+      try {
+        const {data} = await axios.post('http://10.80.4.212:8080/api/v3/auth/favGet', {
+          UserName,
+        });
+        Alert.alert(data && data.message);
+        console.log(JSON.stringify(data));
+        //set favlist on login
+        setFav(data.favlist);
+
+      } catch (error: any) {
+        Alert.alert(error.response.data.message);
+        console.log(error);      
+      }
+
       //get OrderHistoryList on login
       try {
         const {data} = await axios.post('http://10.80.4.212:8080/api/v4/auth/orderhistoryGet', {
@@ -67,6 +83,8 @@ const RegisterScreen = ({navigation} : any) => {
         Alert.alert(error.response.data.message);
         console.log(error);      
       }
+
+      
 
       if(data){
         navigation.navigate('Tab');

@@ -13,13 +13,22 @@ const favSchema = new mongoose.Schema({
     name: {
         type: String,
     },
+    description: {
+        type: String,
+    },
     roasted: {
         type: String,
     },
     imagelink_square: {
         type: Number,
     },
+    imagelink_portrait: {
+        type: Number,
+    },
     special_ingredient: {
+        type: String,
+    },
+    ingredients: {
         type: String,
     },
     type: {
@@ -36,11 +45,17 @@ const favSchema = new mongoose.Schema({
             currency: {
                 type: String,
             },
-            quantity: {
-                type: Number,
-            },
         }],
-    }
+    },
+    average_rating: {
+        type: Number,
+    },
+    ratings_count: {
+        type: String,
+    },
+    favourite: {
+        type: Boolean,
+    },
     }, 
     {timestamps: true}
 );

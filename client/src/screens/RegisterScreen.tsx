@@ -57,7 +57,6 @@ const RegisterScreen = ({navigation} : any) => {
   
 
   return (
-    <SafeAreaView>
     <View style={styles.OuterContainer}>
 
       <Text style={styles.PageTitle}>Let's create an account</Text>
@@ -91,7 +90,6 @@ const RegisterScreen = ({navigation} : any) => {
           
       </View>
     </View>
-    </SafeAreaView>
   )
 }
 
