@@ -126,7 +126,7 @@ const HomeScreen = ({navigation}: any) => {
             
             //increment cart item quantity
             try {
-              const {data} = await axios.put('http://10.80.4.21:8080/api/v2/auth/cartUpdateAdd', {
+              const {data} = await axios.put('http://10.80.4.212:8080/api/v2/auth/cartUpdateAdd', {
                 id,
                 UserName,
               });
@@ -145,7 +145,7 @@ const HomeScreen = ({navigation}: any) => {
         if (size == false) {
           //add a diff size for same product
           try {
-            const {data} = await axios.put('http://10.80.4.21:8080/api/v2/auth/cartUpdateItemAdd', {
+            const {data} = await axios.put('http://10.80.4.212:8080/api/v2/auth/cartUpdateItemAdd', {
               id,
               UserName,
               prices,
@@ -173,7 +173,7 @@ const HomeScreen = ({navigation}: any) => {
     }
     if (found == false) {
       try {
-        const {data} = await axios.post('http://10.80.4.21:8080/api/v2/auth/cartItemAdd', {
+        const {data} = await axios.post('http://10.80.4.212:8080/api/v2/auth/cartItemAdd', {
           id,
           UserName,
           index,

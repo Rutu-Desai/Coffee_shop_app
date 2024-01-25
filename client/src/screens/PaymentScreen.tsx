@@ -45,7 +45,7 @@ const PaymentScreen = ({navigation, route}: any) => {
 
     try {
       const OrderDate = new Date().toDateString() + ' ' + new Date().toLocaleTimeString();
-      const {data} = await axios.post('http://10.80.4.21:8080/api/v4/auth/orderhistorySave', {
+      const {data} = await axios.post('http://10.80.4.212:8080/api/v4/auth/orderhistorySave', {
         UserName,
         OrderDate,
         CartList,
@@ -59,7 +59,7 @@ const PaymentScreen = ({navigation, route}: any) => {
     }
 
     try {
-      const {data} = await axios.put('http://10.80.4.21:8080/api/v2/auth/cartItemAllDelete', {
+      const {data} = await axios.put('http://10.80.4.212:8080/api/v2/auth/cartItemAllDelete', {
         UserName,
       });
       Alert.alert(data && data.message);
@@ -215,6 +215,13 @@ const styles = StyleSheet.create({
     fontFamily: FONTFAMILY.poppins_semibold,
     fontSize: FONTSIZE.size_20,
     color: COLORS.primaryWhiteHex,
+  },
+  ButtonText: {
+    fontFamily: FONTFAMILY.poppins_semibold,
+    fontSize: FONTSIZE.size_20,
+    color: COLORS.primaryWhiteHex,
+    paddingHorizontal: SPACING.space_20*4,
+    paddingVertical: SPACING.space_10/2,
   },
   EmptyView: {
     height: SPACING.space_36,

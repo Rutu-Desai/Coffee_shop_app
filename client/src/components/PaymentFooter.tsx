@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
   },
   ButtonText: {
     fontFamily: FONTFAMILY.poppins_semibold,
-    fontSize: FONTSIZE.size_18,
+    fontSize: FONTSIZE.size_20,
     color: COLORS.primaryWhiteHex,
   },
 });

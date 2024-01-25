@@ -14,7 +14,7 @@ const orderhistorySaveController = async (req, res) => {
             UserName,
             OrderDate,
             CartList,
-            CartPrice,
+            CartListPrice: CartPrice,
         }).save();
 
         return res.status(200).send({

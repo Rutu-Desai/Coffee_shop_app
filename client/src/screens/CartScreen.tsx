@@ -33,13 +33,14 @@ const CartScreen = ({navigation, route}: any) => {
   const tabBarHeight = useBottomTabBarHeight();
 
   const buttonPressHandler = () => {
-    navigation.push('Payment', {amount: CartPrice});
+    navigation.push('DeliveryDetails');
+    // navigation.push('Payment', {amount: CartPrice});
   };
 
   const incrementCartItemQuantityHandler = async (id: string, size: string) => {
     incrementCartItemQuantity(id, size);
     try {
-      const {data} = await axios.put('http://10.80.4.21:8080/api/v2/auth/cartItemIncrement', {
+      const {data} = await axios.put('http://10.80.4.212:8080/api/v2/auth/cartItemIncrement', {
         id,
         size,
         UserName,
@@ -59,7 +60,7 @@ const CartScreen = ({navigation, route}: any) => {
     decrementCartItemQuantity(id, size);
 
     try {
-      const {data} = await axios.put('http://10.80.4.21:8080/api/v2/auth/cartItemDecrement', {
+      const {data} = await axios.put('http://10.80.4.212:8080/api/v2/auth/cartItemDecrement', {
         id,
         size,
         UserName,
@@ -136,7 +137,7 @@ const CartScreen = ({navigation, route}: any) => {
           {CartList.length != 0 ? (
             <PaymentFooter
               buttonPressHandler={buttonPressHandler}
-              buttonTitle="Pay"
+              buttonTitle="Mode of Delivery"
               price={{price: CartPrice, currency: 'Rs'}}
             />
           ) : (

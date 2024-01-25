@@ -52,7 +52,7 @@ const orderhistorySchema = new mongoose.Schema({
             }, 
         ],
     },
-    CartPrice: {
+    CartListPrice: {
         type: String,
     }
 });

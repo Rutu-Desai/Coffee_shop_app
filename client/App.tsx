@@ -10,6 +10,7 @@ import LoginScreen from './src/screens/LoginScreen';
 import RegisterScreen from './src/screens/RegisterScreen';
 import { useStore } from './src/store/store';
 import { View } from 'react-native';
+import DeliveryDetailsScreen from './src/screens/DeliveryDetailsScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -51,6 +52,10 @@ const App =  () => {
         <Stack.Screen
           name="Details"
           component={DetailsScreen}
+          options={{animation: 'slide_from_bottom'}}></Stack.Screen>
+        <Stack.Screen
+          name="DeliveryDetails"
+          component={DeliveryDetailsScreen}
           options={{animation: 'slide_from_bottom'}}></Stack.Screen>
         <Stack.Screen
           name="Payment"

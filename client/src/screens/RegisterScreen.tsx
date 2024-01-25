@@ -4,6 +4,7 @@ import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/th
 import LoginInput from '../components/LoginInput';
 import axios from 'axios';
 import { useStore } from '../store/store';
+import { SafeAreaView } from 'react-native-safe-area-context';
 
 
 const RegisterScreen = ({navigation} : any) => {
@@ -21,7 +22,9 @@ const RegisterScreen = ({navigation} : any) => {
   if(LoggedIn){
     navigation.navigate('Tab');
     return(
-      <></>
+      <SafeAreaView>
+        <></>
+      </SafeAreaView>
     );
   }
 
@@ -37,7 +40,7 @@ const RegisterScreen = ({navigation} : any) => {
 
       console.log("this is ok");
 
-      const {data} = await axios.post('http://10.80.4.21:8080/api/v1/auth/register', {UserName, Email, Password, Phone, Location});
+      const {data} = await axios.post('http://10.80.4.212:8080/api/v1/auth/register', {UserName, Email, Password, Phone, Location});
       Alert.alert(data && data.message);
 
       console.log("data", {UserName, Email, Password, Location});
@@ -54,7 +57,7 @@ const RegisterScreen = ({navigation} : any) => {
   
 
   return (
-
+    <SafeAreaView>
     <View style={styles.OuterContainer}>
 
       <Text style={styles.PageTitle}>Let's create an account</Text>
@@ -88,6 +91,7 @@ const RegisterScreen = ({navigation} : any) => {
           
       </View>
     </View>
+    </SafeAreaView>
   )
 }
 

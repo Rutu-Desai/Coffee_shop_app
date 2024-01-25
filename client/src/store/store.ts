@@ -19,6 +19,7 @@ export const useStore = create(
       Email: '',
       Phone: '',
       Location: '',
+      OtherAddress: '',
 
 
       // when changes to data done
@@ -57,6 +58,13 @@ export const useStore = create(
           produce( state => {
             // console.log("cartlist in setcart",JSON.stringify(CartList));
             state.OrderHistoryList = OrderHistoryList;
+          }),
+        ),
+      setLocation: (text: String) => 
+        set(
+          produce( state => {
+            state.OtherAddress = text;
+            // console.log("other add", state.OtherAddress);
           }),
         ),
       resetUserInfo: () =>
