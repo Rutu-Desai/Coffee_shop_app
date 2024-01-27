@@ -4,6 +4,7 @@ import { BORDERRADIUS, COLORS, FONTFAMILY, FONTSIZE, SPACING } from '../theme/th
 import LoginInput from '../components/LoginInput';
 import axios from 'axios';
 import { useStore } from '../store/store';
+import { useAdminStore } from '../store/Adminstore';
 
 const RegisterScreen = ({navigation} : any) => {
   const [UserName, setUserName] = useState('');
@@ -16,6 +17,10 @@ const RegisterScreen = ({navigation} : any) => {
   const setFav = useStore((state: any) => state.setFav);
   const setOrderHistory = useStore((state: any) => state.setOrderHistory);
   const calculateCartPrice = useStore((state: any) => state.calculateCartPrice);
+
+  const setFavInfo = useAdminStore((state: any) => state.setFavInfo);
+  const setOrderHistoryInfo = useAdminStore((state: any) => state.setOrderHistoryInfo);
+
 
   const handleSubmit = async () => {
     try{
@@ -30,6 +35,39 @@ const RegisterScreen = ({navigation} : any) => {
       //get user details on login
       const {data} = await axios.post('http://10.80.4.212:8080/api/v1/auth/login', {UserName, Password});
       Alert.alert(data && data.message);
+
+      if(data.user.role == 'admin'){
+
+        try {
+          const {data} = await axios.get('http://10.80.4.212:8080/api/v3/auth/favGetAll');
+          Alert.alert(data && data.message);
+
+          //set fav info
+          setFavInfo(data);
+          
+        } catch (error: any) {
+          Alert.alert(error.response.data.message);
+          console.log(error);
+        }
+
+        try {
+          const {data} = await axios.get('http://10.80.4.212:8080/api/v4/auth/orderhistoryGetAll');
+          Alert.alert(data && data.message);
+
+          //set order his info
+          setOrderHistoryInfo(data);
+          
+        } catch (error: any) {
+          Alert.alert(error.response.data.message);
+          console.log(error);
+        }
+
+        navigation.navigate('Admin');
+        return(
+          <></>
+        );
+      }
+      console.log("this shudnt display");
 
       //set values on login
       setUserInfo(data.user.UserName, data.user.Email, data.user.Phone, data.user.Location);

@@ -76,6 +76,26 @@ const favGetController = async (req, res) => {
     }
 };
 
+const favGetAllController = async (req, res) => {
+    try {
+        
+        const favlist = await favModel.find();
+
+        return res.status(200).send({
+            success: true,
+            message: 'items retrieved from fav list',
+            favlist,
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({
+            success: false,
+            message: 'error in fav get all api',
+            error,
+        });
+    }
+};
+
 const favRemoveController = async (req, res) => {
     try {
         const {
@@ -103,4 +123,4 @@ const favRemoveController = async (req, res) => {
 };
 
 
-module.exports = {favSaveController, favGetController, favRemoveController};
+module.exports = {favSaveController, favGetController, favRemoveController, favGetAllController};

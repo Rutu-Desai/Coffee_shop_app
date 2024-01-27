@@ -4,7 +4,7 @@ const userModel = require('../models/userModel');
 
 const registerController = async (req, res) => {
     try {
-        const {UserName, Email, Password, Phone, Location} = req.body
+        const {UserName, Email, Password, Phone, Location, role} = req.body
         //validation
         if(!UserName){
             return res.status(400).send({
@@ -51,7 +51,7 @@ const registerController = async (req, res) => {
         const hashedPassword = await hashPassword(Password);
         
         //save user
-        const user = await userModel({UserName, Email, Password: hashedPassword, Phone, Location}).save();
+        const user = await userModel({UserName, Email, Password: hashedPassword, Phone, Location, role}).save();
 
         return res.status(201).send({
             success: true,

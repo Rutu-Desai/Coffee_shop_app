@@ -11,6 +11,7 @@ import RegisterScreen from './src/screens/RegisterScreen';
 import { useStore } from './src/store/store';
 import { View } from 'react-native';
 import DeliveryDetailsScreen from './src/screens/DeliveryDetailsScreen';
+import AdminScreen from './src/screens/AdminScreen';
 
 const Stack = createNativeStackNavigator();
 
@@ -40,6 +41,10 @@ const App =  () => {
         <Stack.Screen
           name="Login"
           component={LoginScreen}
+          options={{animation: 'slide_from_bottom'}}></Stack.Screen>
+        <Stack.Screen
+          name="Admin"
+          component={AdminScreen}
           options={{animation: 'slide_from_bottom'}}></Stack.Screen>
         <Stack.Screen
           name="Tab"

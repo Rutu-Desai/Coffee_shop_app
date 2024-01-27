@@ -54,5 +54,25 @@ const orderhistoryGetController = async (req, res) => {
     }
 };
 
+const orderhistoryGetAllController = async (req, res) => {
+    try {
+        
+        const orderhistory = await orderhistoryModel.find();
 
-module.exports = {orderhistorySaveController, orderhistoryGetController};
+        return res.status(200).send({
+            success: true,
+            message: 'items retrieved from order history',
+            orderhistory,
+        });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).send({
+            success: false,
+            message: 'error in order get all api',
+            error,
+        });
+    }
+};
+
+
+module.exports = {orderhistorySaveController, orderhistoryGetController, orderhistoryGetAllController};
